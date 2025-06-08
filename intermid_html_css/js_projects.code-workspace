@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"path": ".."
+		},
+		{
+			"path": "../moms_typewriter"
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "js_projects"
+	}
+}

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Forms</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <h1>Speaker Submission</h1>
+    <p>Want to speak at our fake  conference? Fill out this form</p>
+  </header>
+  <main>
+    <form action="" method="post">
+<div><label for="name">Name</label><input class="styleHover"type="text" name="user_name" id="name"></div>
+<div><label for="mail">Email</label><input class="styleHover" type="email" name="user_mail" id="mail" placeholder="you@example.com"></div>
+<div>
+  <label for="stage" id="radioType">Type of Talk</label>
+  <div id="radios">
+    <label for="stage"><input type="radio" id="stage" name="place">Main stage</label>
+  <label for="stage"><input type="radio" name="place">Workshop</label></div>
+  </div>
+<div><label for="size">T-shirt Size</label>
+  <select name="tShirt_size" id="size" class="styleHover">
+    <option value="Extra Small" selected>Extra Small</option>
+     <option value="">Small</option> <option value="">Medium </option>
+      <option value="">Large</option>
+       <option value="">Extra Large</option>
+  </select>
+</div>
+  <div><label for="user_abstract">Abstract</label><textarea class="styleHover"name="abstract" id="user_abstract" rows="7"></textarea></div>
+<div><label for=""></label><div><input type="checkbox" name="availability" id="available_checkbox"><label for="available_checkbox">I'm Actually avaialable the date of the talk</label></div></div>
+<div><button type="submit">Submit</button></div>
+    </form>
+  </main>
+</body>
+</html>
