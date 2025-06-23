@@ -49,38 +49,113 @@
 // console.log(Object.getPrototypeOf(Array.prototype)===Object.prototype)
 
 //character game
-function Warrior(name,level,weapon){
-    Hero.call(this,name,level);
-    this.weapon=weapon;
-}
-function Healer(name, level, spell) {
-  Hero.call(this, name, level);
+// function Warrior(name,level,weapon){
+//     Hero.call(this,name,level);
+//     this.weapon=weapon;
+// }
+// function Healer(name, level, spell) {
+//   Hero.call(this, name, level);
 
-  this.spell = spell;
-}
+//   this.spell = spell;
+// }
 
-function Hero(name,level,points){
-    this.name=name;
-    this.level=level;
-    this.points=points;
-}
+// function Hero(name,level,points){
+//     this.name=name;
+//     this.level=level;
+//     this.points=points;
+// }
 
-let player1=new Hero("danish",2,1);
+// let player1=new Hero("danish",2,1);
 
-Hero.prototype.greet=function(){console.log(`${this.name} greets you`)}
-console.log(`hey ${Object.getPrototypeOf(Warrior.prototype)===Object.prototype}`);
-Object.setPrototypeOf(Warrior.prototype,Hero.prototype);
-console.log( Object.getPrototypeOf(Object.getPrototypeOf(Warrior.prototype))===Object.prototype);
+// Hero.prototype.greet=function(){console.log(`${this.name} greets you`)}
+// console.log(`hey ${Object.getPrototypeOf(Warrior.prototype)===Object.prototype}`);
+// Object.setPrototypeOf(Warrior.prototype,Hero.prototype);
+// console.log( Object.getPrototypeOf(Object.getPrototypeOf(Warrior.prototype))===Object.prototype);
 
-Object.setPrototypeOf(Healer.prototype,Hero.prototype);
+// Object.setPrototypeOf(Healer.prototype,Hero.prototype);
 
-Warrior.prototype.attack=function(){
-    return `${this.name}  attacks with ${this.weapon}`;
-}// console.log(Object.getPrototypeOf(Object.getPrototypeOf(player1))===Object.prototype);
-Healer.prototype.heal=function(){
-        return `${this.name}  spells ${this.spell}`;
+// Warrior.prototype.attack=function(){
+//     return `${this.name}  attacks with ${this.weapon}`;
+// }// console.log(Object.getPrototypeOf(Object.getPrototypeOf(player1))===Object.prototype);
+// Healer.prototype.heal=function(){
+//         return `${this.name}  spells ${this.spell}`;
 
-}
-let hero1=new Warrior("Danish",5,"knife");
-console.log(hero1.attack());
-hero1.greet();
+// }
+// let hero1=new Warrior("Danish",5,"knife");
+// console.log(hero1.attack());
+// hero1.greet();
+
+
+// javascipt info Challanges
+
+// let animal={
+//     jumps:null
+// ,};
+
+// let rabbit={
+//     __proto__:animal,
+//     jumps:true,
+// };
+// alert(rabbit.jumps);//should be true
+
+// delete rabbit.jumps;
+
+// alert(rabbit.jumps); //shpuld be null
+
+// delete animal.jumps;
+
+// alert(rabbit.jumps); //should be undefined
+
+// challenge 2
+
+// let head = {
+//   glasses: 1,
+  
+
+// };
+
+// let table = {
+//   pen: 3,
+//   __proto__:head,
+
+// };
+
+// let bed = {
+//   sheet: 1,
+//   pillow: 2,
+//   __proto__:table,
+
+// };
+
+// let pockets = {
+//   money: 2000,
+//   __proto__:bed,
+// };
+
+// challenge 3
+
+
+let hamster = {
+  stomach: [],
+
+  eat(food) {
+    this.stomach.push(food);
+  }
+};
+
+let speedy = {
+  __proto__: hamster,
+  stomach:[]
+};
+
+let lazy = {
+  __proto__: hamster,
+  stomach:[],
+};
+
+// This one found the food
+speedy.eat("apple");
+alert( speedy.stomach ); // apple
+
+// This one also has it, why? fix please.
+alert( lazy.stomach ); // apple
