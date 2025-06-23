@@ -135,27 +135,95 @@
 // challenge 3
 
 
-let hamster = {
-  stomach: [],
+// let hamster = {
+//   stomach: [],
 
-  eat(food) {
-    this.stomach.push(food);
-  }
-};
+//   eat(food) {
+//     this.stomach.push(food);
+//     // or this.stomach=[food];  second solution with no inherent stomach property in speedy or lazy
+//   }
+// };
 
-let speedy = {
-  __proto__: hamster,
-  stomach:[]
-};
+// let speedy = {
+//   __proto__: hamster,
+//   stomach:[]
+// };
 
-let lazy = {
-  __proto__: hamster,
-  stomach:[],
-};
+// let lazy = {
+//   __proto__: hamster,
+//   stomach:[],
+// };
 
-// This one found the food
-speedy.eat("apple");
-alert( speedy.stomach ); // apple
+// // This one found the food
+// speedy.eat("apple");
+// alert( speedy.stomach ); // apple
 
-// This one also has it, why? fix please.
-alert( lazy.stomach ); // apple
+// // This one also has it, why? fix please.
+// alert( lazy.stomach ); // apple
+
+// function danish(){
+//     console.log(Object.getPrototypeOf(Object.getPrototypeOf(Object.getPrototypeOf(Object.getPrototypeOf(this))))===Object.prototype);
+// }
+// danish(); this is window object over  here,  above  code mentiones the deep prototype chain o fthe window object(when function is directly called)
+
+
+// let car={
+//     brand:"honda",
+//     getbrand:function(){
+//         return this.brand;
+//     },
+// };
+
+// let brand=car.getbrand.bind(car);//bind is  afunction of Function protoype object
+// console.log(brand());
+
+//construcntor invocation
+
+// function Car(brand){
+//     this.brand=brand;
+// }
+
+// Car.prototype.getBrand=function(){
+//     return this.brand;
+// }
+// let car=new Car('honda');
+// console.log(car.getBrand());
+
+//indirect invokation
+// call and apply with function calling to provide with this as firstt argument
+// getbrand.call(this.brand,seciond argument)
+
+
+//arrow function cannot be used as constructor function
+// let user={
+//     hobbies:['cycling','guitar','bikepacking'],
+//     name:'danish',
+//     testme:function(){
+//         this.hobbies.forEach(
+//         (hobby)=>console.log(this.name+" "+hobby))
+//     }//arrow function to get context of object in callbackfunctionss(new context) or use second argument with callbakc as object you want context in the callback
+// }
+// user.testme();
+
+//object.create() function
+// console.dir(Object.getPrototypeOf(Object.keys));
+// const noproto=Object.create(null);//argument of obejct's prototype
+// //main purpose of Object.create is to extend constructors
+
+// const Car=function(mag){
+//     this.mag="x";
+// }
+// Car.prototype.getcolor=function(color){
+//     this.color=color;
+//     console.log(this.color);
+// }
+// const Toycar=function(){}
+// const newcar=new Car("x");
+
+// const newtoycar=new Toycar();
+// // Object.setPrototypeOf(Toycar.prototype,Car.prototype);
+// newtoycar.getcolor('red');
+// console.dir(Object.getPrototypeOf(Object.getPrototypeOf(Toycar.prototype))===Object.prototype)
+// console.log(newtoycar.getcolor('red'));//set protoype of constructor to other constructor
+// can use create methoid to0
+//  Toycar.prototype=Object.create(Car.prototype);
