@@ -227,3 +227,9 @@
 // console.log(newtoycar.getcolor('red'));//set protoype of constructor to other constructor
 // can use create methoid to0
 //  Toycar.prototype=Object.create(Car.prototype);
+
+
+
+
+
+//factory functions, module patterns,iife and closures practice
