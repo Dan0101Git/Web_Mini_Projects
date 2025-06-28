@@ -233,3 +233,138 @@
 
 
 //factory functions, module patterns,iife and closures practice
+
+//scope
+// var first=function(){
+//     console.log("hey");
+// }
+// window.first();//not availabke with const andd let, first isnt attached to window object if declkared wiuth const or let
+//  function bro(){
+//      let cool;
+//      if(1===1){
+//                 const cool="bro";
+
+//      }
+//      console.log(cool)
+// return cool;
+//  }
+//  bro();
+//  for(var i=0;i<10;i++){
+//     console.log(i);
+//  }
+//  console.log(i+"hey");
+
+//closures
+
+//closure first example
+// function outer(){
+//     const outerVar="i am the outer var";
+// return function(){
+//     const innerVar="i am the inner var";
+//     console.log(innerVar+", "+outerVar);
+// }
+
+// }
+// const user=outer();
+// user();
+// function createGreeting(greeting){
+//     const myGreet=greeting.toUpperCase();
+//     return function(name){
+//         return `${myGreet} ${name}`;
+//     }
+// }
+// const myEc=createGreeting("namaste");
+// const hey=createGreeting("hey");
+// console.log(myEc("danish") +", "+ hey("danish"));
+// console.log(hey("ishan"));// we did in two seperate functions so as to have standardised version of each greeting, and seperate greeting type  from the personw e are greetig
+//so simply whenever we need ot have a specific greet to a person, we cann that greet function on the person'sname, segragation helps in arranging js code here
+
+
+//private variables
+// function creategame(name){
+// let score=0;
+// const win=function (){
+//     score++;
+//     return `${name}'s score:${score}`
+// }
+// return win;
+// }
+// const game1=creategame("fifa");
+// game1();
+// game1();
+
+// console.log(game1());//score is private for the closure and closure stays un the memory as logn it is pointing to thw iinner function
+// function creategame(name){
+// let score=0;
+// const win=function (){
+//     score++;
+//     return `${name}'s score:${score}`
+// }
+// return win;
+// }
+// function person(){
+// const game1=creategame("fifa");
+// return game1;
+// }
+// let newgame=person();
+// newgame();
+// newgame();
+// newgame();
+// newgame();
+// newgame();
+// newgame();
+// newgame();
+
+// console.log(newgame());
+
+
+
+
+
+
+
+//module patterns
+
+// const module=(function(){
+//     const log=(message)=>{console.log(message+timesRun);}
+// let timesRun=0;
+//     const makeUpperCase=(text)=>{
+//         log("hey danish");
+//         timesRun++;
+//         return text.toUpperCase();
+//     }
+//   return {
+//      newTimesRun: timesRun,
+//     makeUpperCase,
+// }
+// })();
+// module.makeUpperCase("ishan");
+// module.makeUpperCase("ishan");
+// module.makeUpperCase("ishan");
+// module.makeUpperCase("ishan");
+// module.makeUpperCase("ishan");
+// module.makeUpperCase("ishan");
+// module.makeUpperCase("ishan");
+// console.log(module.newTimesRun);//module  is  aoughto  flcosre too, since  makeuppercase containins variable of outer  function, so timenewrun conetxt remains same
+// module.timesRun=10;
+// module.makeUpperCase("ishan");
+// console.log(module.newTimesRun);
+
+
+//some  rules
+
+//efficiient dom usage
+
+//protypal inheritance again
+// const person={
+//     species:"humans",
+//     saySpecies:function(){
+//         console.log(this.species);
+//     },
+//     sayName:function(){
+// console.log(this.name);
+//     }
+// }
+// let musician=Object.create(person);
+// console.dir(Object.getPrototypeOf(person))
+// console.dir(Object.getPrototypeOf(musician)===person);
