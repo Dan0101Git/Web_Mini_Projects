@@ -368,3 +368,324 @@
 // let musician=Object.create(person);
 // console.dir(Object.getPrototypeOf(person))
 // console.dir(Object.getPrototypeOf(musician)===person);
+
+
+// const proto = {
+//     level:0 ,
+//   hello: function hello() {
+//     return `Hello, my name is ${ this.name }`;
+//   },
+//   type:{species:"homo"}
+// };
+
+// // const george = Object.assign({}, proto, {name: 'George'});
+// const george=proto;
+
+// const msg = george.hello();
+// george.hello=function(){return "danish"};
+// george.level=1;
+
+// console.dir(proto.hello());
+// const counter=(function(){
+//     let counter=0;
+//     const getInstance=function(){
+//         return this;
+//     };
+//     const getCount=function(){
+//         return counter;};
+//     const increment=function(){
+//             return  counter++;
+//         };
+//     const decrement=function(){
+//         return counter--;
+//     };
+//     return{getInstance,getCount,increment,decrement}
+//     }
+
+// )();
+// counter.increment();
+// counter.increment();
+// counter.increment();
+// counter.increment();
+// counter.increment();
+// counter.increment();
+// counter.increment();
+// counter.increment();
+// counter.increment();
+// counter.decrement();
+// counter.decrement();
+// counter.decrement();
+// counter.decrement();
+// counter.decrement();
+// counter.decrement();
+// counter.decrement();counter.decrement();
+// counter.decrement();
+// counter.decrement();
+
+// console.log(counter.getCount()); 
+
+
+//gemini exercises for more confidence
+
+// const createShoppingCart=function(taxRate){
+//     const items=[];
+//     const itemList=[];
+
+//     const addItem=function(name,price){items.push({name,price})};
+//     const getItemCount=function(){
+//         return items.length;
+//     }
+//     const getTotal=function(){
+//             let itemSum=0;
+//          items.forEach((item)=>{itemSum=item.price+itemSum;})
+//         return itemSum+((this.taxRate/100)*itemSum);
+//     }
+//     const getItemList=function(){
+//         items.forEach((item)=>{itemList.push(item.name)});
+//         return itemList;
+//     }
+//     return {addItem,getItemCount,getTotal,taxRate,getItemList}
+// }
+// const cart1=createShoppingCart(8);//create the closure
+
+// cart1.addItem("cookie",48);
+// cart1.addItem("chips",57);
+// cart1.addItem("fruits",90);
+// cart1.addItem("fruits",90);
+// cart1.addItem("fruits",90);
+// cart1.addItem("fruits",90);
+
+
+
+
+// console.log(cart1.getTotal(),cart1.getItemList(),isOverBudget(cart1,250));
+// function isOverBudget(cart,limit){
+//     const getcartTotal=cart.getTotal;
+//     return getcartTotal.call(cart)>limit
+// }
+
+
+
+
+//challenge 2
+// const GameManager=(function(){
+//     let highScore=0;
+//     const getHighScore=function(){return highScore}
+//     const updateHighScore=function(newScore){
+//         highScore=newScore>highScore?newScore:highScore;
+//     }
+ 
+//     return{getHighScore,updateHighScore}
+// })();
+// const Player=function(){
+//     let currentScore=0;
+//     const incrementCurrentScore=function(){
+//         currentScore++;
+//     }
+//   const {getHighScore, updateHighScore}=GameManager;
+//     const getCurrentScore=function(){
+
+//         return currentScore;
+//     }
+//     return{getCurrentScore,incrementCurrentScore,getHighScore,updateHighScore};
+// }
+
+// let player1=Player();
+// player1.incrementCurrentScore();
+// player1.incrementCurrentScore();
+// player1.incrementCurrentScore();
+// player1.incrementCurrentScore();
+// player1.incrementCurrentScore();
+// player1.incrementCurrentScore();
+// console.log(player1.getCurrentScore());
+// player1.updateHighScore(player1.getCurrentScore());
+// console.log(player1.getHighScore());
+// //factory choice good for player because we ant instances of different players with peronalsied scores
+// //singleton module for gamemanager, because we can compose gamemanger's ffunctions as personalsied functionions for each player insatnce
+// //i dont really get this i am i really underconfident and feeling extremely lost rigth now
+// let player2=Player();
+// player2.incrementCurrentScore();
+// player2.incrementCurrentScore();
+// player2.incrementCurrentScore();
+// player2.incrementCurrentScore();
+// player2.incrementCurrentScore();
+// player2.incrementCurrentScore();
+// player2.incrementCurrentScore();
+// player2.incrementCurrentScore();
+// player2.incrementCurrentScore();
+// player2.incrementCurrentScore();
+// player2.updateHighScore(player2.getCurrentScore());
+// console.log(player2.getHighScore());
+// console.log(player1.getHighScore());
+
+// document.querySelector("#btn1").addEventListener("click",btn1handler)
+// function btn1handler(){
+//     this.textContent="I was clicked";
+//     return
+// }
+// const myHandler = {
+//     message: 'Button 2 was clicked!',
+    
+//     handleClick: function() {
+//         // How do you get this to log the message property?
+//         // And how could you also get it to change the button's text?
+//     btn2.textContent=this.message;
+//     }
+// };
+// const btn2=document.querySelector("#btn2");
+// btn2.addEventListener("click",myHandler.handleClick.bind(myHandler))
+
+// // Attach myHandler.handleClick to Button 2. How do you fix the 'this' context
+
+// document.querySelector("#btn3").addEventListener("click",()=>{
+//    this.textContent = 'This will not work!';//this here refers to the lexical scoping or in an arrow function it refers to the object where it can find th eobject, and hence referes to the window object here
+// })
+
+
+// challenge 4
+// simple game world//character and physics laws()gloebal
+// const world=(function(){
+    
+//     const updateGravity=function(){//this is private method to update the world object
+//         console.log(this)
+// this.gravity=this.gravity || 9.8;
+//     }
+//     const getGravity=function(){
+//         updateGravity.bind(this)();
+//      return this.gravity
+//     }
+//     const getWeather=function(){
+//            this.weather="sunny";
+//         return this.weather;
+//     }
+//     return{getGravity,getWeather}
+
+// })();//singleton is perfect becoaseu it  asigular source of truth for every character in this world(hence no need of personalsiation since everyone experiences it)
+
+
+// const createCharacter=function(name,health){
+// let position={x:0,y:0};
+// // const {getGravity,getWeather}=world;//i am not using this statemnt so as to prevent polluting chaarcter object with graivty, everytime gravityis updated
+// let gravity=world.getGravity();
+// let weather=world.getWeather();
+// const getPosition=function(){
+//     return  position;
+// }
+
+// const jump=function(){
+//     position.x+=health;
+//     position.y+=parseInt(health*10/gravity);
+
+//     return `${name} jumps iwth a force against gravity of ${gravity}`
+// }
+// return {getPosition,jump}
+// }
+// const  char1=new createCharacter("danish",100);
+// const char2=new createCharacter("shivam",200);
+// char1.jump();char1.jump();
+// char1.jump();
+// char1.jump();
+// char1.jump();
+// char2.jump();char2.jump();char2.jump();
+// console.log(char1.getPosition(),char2.getPosition());
+// world.gravity=11;
+// char1.jump();
+// char1.jump();
+// char1.jump();
+// char1.jump();
+// char1.jump();
+
+// console.log(char1.getPosition());
+// char2.jump();char2.jump();char2.jump();char2.jump();
+// console.log(char2.getPosition());
+
+
+
+// //challenge 5
+// //part A
+// const createBook=function(title,author){
+//     let _isCheckedOut=false;
+//     let _currentPage=0;
+// const checkOut=function(){
+//     _isCheckedOut=true;
+
+// }
+// const checkIn=function(){
+//     _isCheckedOut=false
+
+// }
+// const read=function(pages){
+//     _currentPage=pages+1;
+//     return _currentPage;
+// }
+// const getStatus=function(){
+//     return _isCheckedOut
+// }
+// return{checkOut,checkIn,getStatus,read} 
+// }
+// //partB
+// const Book=function(title,author){
+// this.title=title;
+// this.author=author;
+// this.checked=false;
+// this.currentpage=0;
+// }
+
+// Book.prototype.checkOut=function(){
+//     this.checked=true;
+// }
+// Book.prototype.checkIn=function(){
+//     this.checked=false;
+// }
+// Book.prototype.getStatus=function(){
+//    return this.checked
+// }
+// Book.prototype.read=function(pages){
+//     this.currentpage=pages+1;
+//     return this.currentpage;
+// }
+
+// //factory function felt more intuitive and naturanl, because how elegant and more natural faactory functions feel closure to actual functions than constructors are
+// //also if while defining constructor you forget new, you;d get error, or unexpected result
+// //privacy in factory functions is handled by closures, wile in contructors i am not sure how private the variables are
+// //thiese methods live iin th eprotoype which the contructor points towards, that is in Book.protoype, the instance inehrits these mehtods
+// //n factory function they live isnide the instance or the object created, hence protoype method can save memory
+
+
+
+// //cahlenge 6
+
+// //defining behaviors
+
+// const canFight = {
+//     attack(target) {
+//         console.log(`${this.name} attacks ${target.name} for 5 damage!`);
+//     }
+// };
+
+// const canCast = {
+//     cast(spell, target) {
+//         console.log(`${this.name} casts ${spell} on ${target.name}!`);
+//     }
+// };
+
+// const canHeal = {
+//     heal(target) {
+//         console.log(`${this.name} heals ${target.name}.`);
+//     }
+// };
+// const createCharacter=function(name){
+// const getHealth=function(health=100){
+//     this.health=health;
+//     return this.health
+// }
+// return{name,getHealth}
+// }
+// let warrior=Object.assign(createCharacter("danish"),canFight);
+
+
+// let Priest=Object.assign(createCharacter("arora"),canCast,canHeal);
+// warrior.attack(Priest)
+// //justification:it knew that this.name belongs to warrior names danish, becuase object.assign copied gethealth and name along with canfight object, into an object createing personalised  can fight or can heal for each character, along with their name, also we are calling warrior.attack, hence this is attached to warrior and target.name is a personalsied property of character priest
+// //composition makes it possile since we ar ecomposing a new obejct 
+// //this way we can have eprsonalised properties of each object and kind of mixc characters over single traits without worrying about mixing proerties
