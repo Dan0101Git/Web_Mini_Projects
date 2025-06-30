@@ -689,3 +689,123 @@
 // //justification:it knew that this.name belongs to warrior names danish, becuase object.assign copied gethealth and name along with canfight object, into an object createing personalised  can fight or can heal for each character, along with their name, also we are calling warrior.attack, hence this is attached to warrior and target.name is a personalsied property of character priest
 // //composition makes it possile since we ar ecomposing a new obejct 
 // //this way we can have eprsonalised properties of each object and kind of mixc characters over single traits without worrying about mixing proerties
+
+
+
+//challenge 7(architect)
+//text absed dungeon game
+// const Game=(function(){
+//    let state=false;
+//     const start=function(){
+//         state=true;
+//     };
+//    const stop=function(){
+//        state=false;
+//     };
+//     const getState=function(){
+//         return state;
+//     }
+//     return {start,stop,getState};
+// })();
+// const Character=function(strength){
+//      let health=100;
+
+//    const updateHealth=function(weaponStrength=0){
+//         if(health>0 && weaponStrength!==100)
+//         health-=strength+weaponStrength;
+    
+//     else if(weaponStrength===100){
+//         health=100;
+//         return;
+//     }
+// }
+//     const getHealth=function(){
+//         return health;
+//     }
+//     const updateStrength=function(
+        
+//         charStrength){
+//             strength=charStrength;
+
+//     }
+//    return {updateHealth,getHealth,updateStrength} 
+// }
+// const Loot=function(name,power){
+  
+// return{name,power}
+// }
+
+// const healthPlus=new Loot("Health Potion",100);
+// const sword=new Loot("sword",10);
+// const fire=new Loot("fire",20);
+// const water=new Loot("water",15);
+
+
+
+// const Player=(function(){
+//     const inventory=[sword,fire];
+//     let name;
+    
+//    const setInventory=function(item){
+//     inventory.push(item);
+//     console.log(inventory);
+//    }
+//     const getStrength=function(){
+//         let weaponStrength=inventory[Math.floor(Math.random()*inventory.length)].power;
+//         // console.log(weaponStrength);
+//         return weaponStrength;
+//     }
+//  return Object.assign({},{getStrength,setInventory},Character(24))
+// })();
+// const monster=function(name){
+//   const inventory=[sword,fire,water,healthPlus];
+//     const attack=function(target){
+//         if(Game.getState()){ if(target.getHealth()>0 && this.getHealth()>0){  this.updateHealth(target.getStrength());
+//         target.updateHealth();
+//         console.log(this.getHealth())//this is monster knowckout strentgh
+//    console.log(this.getHealth()<=0);
+//     }
+//      if( !target.getHealth()>0 || inventory.length===0)
+//     {
+//         Game.stop();
+//         console.log(target.getHealth());
+//         console.log(`game over, ${this.name} gave a final blow to player`)
+//     }
+//     if(this.getHealth()<=0){
+//         this.updateItems(this,target)
+//     }}
+//         // console.log(target.getStrength())
+       
+// }
+// const updateItems=function(mon,target){
+//     let newItem=inventory.pop();
+//     console.log(inventory)
+//     mon.updateHealth(newItem.power);
+//     console.log(newItem);
+//     target.updateHealth(newItem.power);
+//    target.setInventory(newItem);
+// }
+      
+
+//     return Object.assign({},{attack,name,updateItems},Character(15))
+// }
+// const Goblin=new monster("goblin");
+// Game.start();
+// Goblin.attack(Player);
+// Goblin.attack(Player);
+// Goblin.attack(Player);
+// Goblin.attack(Player);
+// Goblin.attack(Player);
+// Goblin.attack(Player);
+// Goblin.attack(Player);
+// Goblin.attack(Player);
+// Goblin.attack(Player);
+
+// console.log(Goblin.getHealth());
+// console.log(Player.getHealth());
+
+
+
+
+
+
