@@ -707,8 +707,10 @@
 //     }
 //     return {start,stop,getState};
 // })();
-// const Character=function(strength){
+// const Character=function(initialStrength){
 //      let health=100;
+//      let strength=initialStrength;
+
 
 //    const updateHealth=function(weaponStrength=0){
 //         if(health>0 && weaponStrength!==100)
@@ -722,9 +724,7 @@
 //     const getHealth=function(){
 //         return health;
 //     }
-//     const updateStrength=function(
-        
-//         charStrength){
+//     const updateStrength=function(charStrength){
 //             strength=charStrength;
 
 //     }
@@ -762,7 +762,7 @@
 //     const attack=function(target){
 //         if(Game.getState()){ if(target.getHealth()>0 && this.getHealth()>0){  this.updateHealth(target.getStrength());
 //         target.updateHealth();
-//         console.log(this.getHealth())//this is monster knowckout strentgh
+//         console.log(this.getHealth())
 //    console.log(this.getHealth()<=0);
 //     }
 //      if( !target.getHealth()>0 || inventory.length===0)
@@ -790,7 +790,10 @@
 //     return Object.assign({},{attack,name,updateItems},Character(15))
 // }
 // const Goblin=new monster("goblin");
+// const Gargantua=monster("giant");
 // Game.start();
+// Gargantua.updateStrength(30);
+// console.log(Gargantua);
 // Goblin.attack(Player);
 // Goblin.attack(Player);
 // Goblin.attack(Player);
@@ -798,11 +801,19 @@
 // Goblin.attack(Player);
 // Goblin.attack(Player);
 // Goblin.attack(Player);
-// Goblin.attack(Player);
-// Goblin.attack(Player);
+// Gargantua.attack(Player);
+// Gargantua.attack(Player);
+// Gargantua.attack(Player);
+
+// Gargantua.attack(Player);
 
 // console.log(Goblin.getHealth());
 // console.log(Player.getHealth());
+
+
+//certain rules
+//single responsibility
+// plan data first -> think abou tth e shape of the data
 
 
 
