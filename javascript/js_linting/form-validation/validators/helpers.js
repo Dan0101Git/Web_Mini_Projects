@@ -1,4 +1,4 @@
-import {
+import {showError,
   patterns,
   passArray,
   form,
@@ -12,7 +12,13 @@ import {
 
 const helpers = (function () {
   function markValidity(element, action) {
-    let className = isValid(element) ? "valid" : "invalid";
+    let className
+    if(element.validity.valueMissing){
+            className="invalid";
+      element.nextElementSibling.textContent=showError(element.getAttribute("type"));
+    }
+    else
+     className = isValid(element) ? "valid" : "invalid";
     element.className = className;
     console.log(action, className);
 
@@ -29,6 +35,7 @@ const helpers = (function () {
 
   function checkPasswordValidity(element) {
     const errorDiv = element.nextElementSibling;
+    console.log(errorDiv)
     const errorDivArray = Array.from(errorDiv.children);
 
     for (let i = 0; i < 5; i++) {

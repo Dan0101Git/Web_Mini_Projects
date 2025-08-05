@@ -93,7 +93,7 @@ input+.error,input+div:has(.error){
  display: none;
 }
 
-.error.active,.active:has(span.error){
+input:focus+.error.active,input:focus+.active:has(span.error),input.show+.error.active,input.show+.active:has(span.error){
    opacity: 1;
     color:red;
     font-size: .8rem;

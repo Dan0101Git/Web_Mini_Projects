@@ -16,32 +16,48 @@ const validityCheckers = (function () {
   function onPageLoad(e) {
     elementArray.forEach((element) => {
       let error;
-      if (element !== password) {
+ 
+   
         error = document.createElement("span");
         error.classList.add("error");
         element.parentNode.appendChild(error);
-      } else {
-        helpers.addErrorToPassword(password);
-      }
       helpers.markValidity(element, "load");
     });
   }
 
   function onInputChange(e) {
     let element;
+      let error;
     if (e.target.closest("select")) {
       element = zipCode;
     } else {
       element = e.target.closest("input");
     }
+        if(element===password )
+    {
+      element.nextElementSibling.remove();
+      if(!password.validity.valueMissing)
+        helpers.addErrorToPassword(password);
+      else
+      {
+       error = document.createElement("span");
+        error.classList.add("error");
+        element.parentNode.appendChild(error);
+      }
+   
+    }
     helpers.markValidity(element, "change");
-    if(element===password)
-        helpers.markValidity(confirmPassword,"change");
+    if(element===password){
+              helpers.markValidity(confirmPassword,"change");
+
+    }
+           console.log(element.validity.valueMissing);
   }
 
   function onFormSubmission(e) {
     elementArray.forEach((element) => {
       helpers.markValidity(element, "change");
+      element.classList.add("show");
     });
 
     if (!document.querySelector(".invalid")) {

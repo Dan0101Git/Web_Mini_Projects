@@ -17,5 +17,8 @@ const password=document.getElementById("password");
 const confirmPassword=document.getElementById("confirm-password");
 const elementArray=[email,zipCode,password,confirmPassword];
 
+function showError(type){
+    return `please enter the ${type}`
+}
 
-export {patterns,passArray,form,email,countryCode,zipCode,password,confirmPassword,elementArray};
+export {showError,patterns,passArray,form,email,countryCode,zipCode,password,confirmPassword,elementArray};
