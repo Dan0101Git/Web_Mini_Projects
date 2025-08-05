@@ -1,4 +1,4 @@
-import listeners from "./eventListeners.js";
+import listeners from "../eventListeners.js";
 import {
   patterns,
   passArray,
@@ -9,8 +9,8 @@ import {
   password,
   confirmPassword,
   elementArray,
-} from "./validators/valueMatching.js";
-import helpers from "./validators/helpers.js";
+} from "./valueMatching.js";
+import helpers from "./helpers.js";
 
 const validityCheckers = (function () {
   function onPageLoad(e) {

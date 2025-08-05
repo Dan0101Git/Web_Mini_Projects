@@ -1,4 +1,4 @@
-import validityCheckers from "./script.js";
+import validityCheckers from "./validators/script.js";
 const form=document.querySelector("form");
 const countryCode=document.querySelector("select");
 
