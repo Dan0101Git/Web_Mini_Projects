@@ -90,12 +90,15 @@ input.valid{
 input+.error,input+div:has(.error){
  opacity: 0;
  align-self: flex-start;
+ display: none;
 }
 
 .error.active,.active:has(span.error){
    opacity: 1;
     color:red;
     font-size: .8rem;
+    display: block;
+    padding:.5rem;
 }
 .error.match{color:green;}
 .error{display: block;}
