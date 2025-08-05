@@ -35,6 +35,8 @@ const validityCheckers = (function () {
       element = e.target.closest("input");
     }
     helpers.markValidity(element, "change");
+    if(element===password)
+        helpers.markValidity(confirmPassword,"change");
   }
 
   function onFormSubmission(e) {
