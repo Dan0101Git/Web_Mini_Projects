@@ -14,7 +14,6 @@ import helpers from "./validators/helpers.js";
 
 const validityCheckers = (function () {
   function onPageLoad(e) {
-    console.log("hey", e);
     elementArray.forEach((element) => {
       let error;
       if (element !== password) {
@@ -36,7 +35,6 @@ const validityCheckers = (function () {
       element = e.target.closest("input");
     }
     helpers.markValidity(element, "change");
-    console.log("heyman", element);
   }
 
   function onFormSubmission(e) {
