@@ -19,13 +19,27 @@ form{
     align-items: center;
     align-content: center;
     padding: 2rem 2rem;
-  min-height:60%;
-  width:70%;
+  min-height:70%;
+  width:min(50%,650px);
   background-color:rgba(137, 43, 226, 0.124);
   border-radius: 2rem;
 }
 form>div.buttons{
-    align-self: flex-end;
+    align-self: center;
+}
+form button{
+    width:60%;
+padding:1rem;
+background-color: rgba(3, 3, 3, 0.672);
+border:none;
+border-radius: 1rem;
+color: rgb(255, 255, 255);
+}
+form button:hover{
+    background-color:rgba(3, 3, 3, 0.39);
+    color:black;
+    cursor: pointer;
+    font-weight: 800;
 }
 form>div{
     width: 80%;
@@ -34,6 +48,9 @@ form>div{
     justify-content: center;
     align-items: center;
     gap:.4rem;
+}
+form>div>div{
+    width:100%;
 }
 form label{
     align-self: flex-start;
@@ -61,3 +78,24 @@ input:focus,input:hover,label:has(+input:hover),textarea:focus,textarea:hover{
     border-color: purple;
     
 }
+form>div{
+    position: relative;
+}
+input.invalid{
+    border:1px solid red;
+}
+input.valid{
+     border:2px solid green;
+}
+input+.error,input+div:has(.error){
+ opacity: 0;
+ align-self: flex-start;
+}
+
+.error.active,.active:has(span.error){
+   opacity: 1;
+    color:red;
+    font-size: .8rem;
+}
+.error.match{color:green;}
+.error{display: block;}
