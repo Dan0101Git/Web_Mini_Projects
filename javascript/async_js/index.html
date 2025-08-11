@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <img class="giphy" src="" alt="">
+    <script>
+const image=document.querySelector(".giphy");
+fetch('https://api.giphy.com/v1/gifs/translate?api_key=kfntN73wNo9mkabnw7BD1iTMGwy0uTSB&s=cats', {mode: 'cors'})
+.then((response)=>{return(response.json())})
+.then((message)=>{
+    const imageUrl=message.data.images.original.url;
+    console.log(imageUrl)
+    image.setAttribute("src",imageUrl)
+});
+   </script>
+</body>
+</html>
