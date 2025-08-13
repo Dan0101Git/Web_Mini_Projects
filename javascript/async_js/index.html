@@ -38,27 +38,32 @@ return {refreshPromise,searchPromise};};
 
 createPromise().refreshPromise();
 createPromise().searchPromise();
-function refreshTheImage(e){
-    if(e)console.log(e.target)
-    image.setAttribute("src","./load.gif")
-    fetch(`https://api.giphy.com/v1/gifs/translate?api_key=kfntN73wNo9mkabnw7BD1iTMGwy0uTSB&s=${query}`, {mode: 'cors'})
-.then((response)=>{
-    const responseFtech=response.json();
+async function refreshTheImage(e){
+    try{    if(e)console.log(e.target)
+        image.setAttribute("src","./load.gif")
+        const response=await fetch(`https://api.giphy.com/v1/gifs/translate?api_key=kfntN73wNo9mkabnw7BD1iTMGwy0uTSB&s=${query}`, {mode: 'cors'});
 
-    return(responseFtech)})
-.then((message)=>{
-    console.log(message.data);
-    if(message.data.length===0){
+        const parsedResponse=await response.json();
+        setImageToDom(parsedResponse);
+}
+    catch(error){
+    console.log(error)
+}
+
+}
+function setImageToDom(response){
+
+    const responseFtech= response;
+    console.log(response.data);
+    if(response.data.length===0){
 console.log(query);
     image.setAttribute("src","./bug.gif")
-        return Promise.reject("no giphy found :/");
+       throw new Error("no giphy found :/");
 
     }
-    const imageUrl=message.data.images.original.url;
+    const imageUrl=response.data.images.original.url;
     console.log(imageUrl)
     image.setAttribute("src",imageUrl);
-})
-.catch((error)=>{console.log(error)});
 
 }
 
