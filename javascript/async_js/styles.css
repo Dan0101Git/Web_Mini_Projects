@@ -6,4 +6,32 @@ align-items: center;}
 .giphy{
     width:20rem;height:20rem;
 margin:0 auto;
+border:1px solid black;
+border-radius: 2rem;
+background-color: rgba(0, 0, 0, 0.07);
+}
+button.refresh{
+    margin:2rem;
+}
+div.searchBar{
+    position: absolute;
+    top:2rem;
+}
+button{
+    padding:.6rem;
+    border: none;
+    box-shadow: .1rem .1rem .2rem rgba(0, 0, 0, 0.234);
+    border-radius: .7rem;
+    background-color: rgba(44, 44, 44, 0.064);
+}
+input{
+    height:1.3rem;
+    padding:.5rem;
+    width:15rem;
+    border-radius: 1rem;
+}
+button:hover{
+    background-color: rgba(128, 128, 128, 0.688);
+    color:white;
+    scale:1.01;
 }

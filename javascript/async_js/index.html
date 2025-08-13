@@ -8,15 +8,60 @@
 </head>
 <body>
     <img class="giphy" src="" alt="">
+    <div class="searchBar">
+            <input type="text" placeholder="search">
+            <button class="search">SEARCH</button>
+    </div>
+
+    <button class="refresh">REFRESH</button>
     <script>
 const image=document.querySelector(".giphy");
-fetch('https://api.giphy.com/v1/gifs/translate?api_key=kfntN73wNo9mkabnw7BD1iTMGwy0uTSB&s=cats', {mode: 'cors'})
-.then((response)=>{return(response.json())})
+const refreshButton=document.querySelector(".refresh");
+const searchButton=document.querySelector(".search");
+const searchInput=document.querySelector("input");
+let query="cats";
+refreshTheImage();
+function createPromise(){
+const refreshPromise=function(){
+
+        refreshButton.addEventListener("click",refreshTheImage)
+}
+;
+const searchPromise=function(){
+
+        searchButton.addEventListener("click",(e)=>{    query=searchInput.value;
+    refreshTheImage(e)})
+}
+;
+
+return {refreshPromise,searchPromise};};
+
+createPromise().refreshPromise();
+createPromise().searchPromise();
+function refreshTheImage(e){
+    if(e)console.log(e.target)
+    image.setAttribute("src","./load.gif")
+    fetch(`https://api.giphy.com/v1/gifs/translate?api_key=kfntN73wNo9mkabnw7BD1iTMGwy0uTSB&s=${query}`, {mode: 'cors'})
+.then((response)=>{
+    const responseFtech=response.json();
+
+    return(responseFtech)})
 .then((message)=>{
+    console.log(message.data);
+    if(message.data.length===0){
+console.log(query);
+    image.setAttribute("src","./bug.gif")
+        return Promise.reject("no giphy found :/");
+
+    }
     const imageUrl=message.data.images.original.url;
     console.log(imageUrl)
-    image.setAttribute("src",imageUrl)
-});
+    image.setAttribute("src",imageUrl);
+})
+.catch((error)=>{console.log(error)});
+
+}
+
    </script>
 </body>
 </html>
