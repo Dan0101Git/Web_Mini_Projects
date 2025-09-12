@@ -24,15 +24,20 @@ return mergedArray;
 
 }
 function mergeSort(sortedArray,left=0,right=sortedArray.length-1){
-if(left>=right)
-    return sortedArray[(left+right)/2]
-let mid=(left+right)/2;
-mergeSort(sortedArray,left,mid);
-mergeSort(sortedArray,mid+1,right);
-mergeArray()
+
+    let mid=parseInt((left+right)/2);
+    console.log(sortedArray[mid],left,mid,right)
+if(left>=right){
+    console.log("base case reached");
+        return [sortedArray[mid]];
 }
-let list1;
-let list2;
-list1 = [2];
-list2 = [1];
-console.log(mergeArray(list1,list2));
+
+
+let list1=mergeSort(sortedArray,left,mid);
+let list2=mergeSort(sortedArray,mid+1,right);
+//console.log(list2)
+let mergedArray= mergeArray(list1,list2);
+//console.log(mergedArray)
+return mergedArray;
+}
+console.log(mergeSort([7,24,98,21,54,87,213,867,32,54,1,324523,45,3244,45455343]));
