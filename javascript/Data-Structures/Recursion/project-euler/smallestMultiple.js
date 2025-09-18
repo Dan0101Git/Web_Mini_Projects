@@ -22,7 +22,7 @@ while(i<=n/2)
                         arr.splice(pow.index,pow.c,...pow.arr);
              }
        else 
-       newArr==getPrimeFactors(i)
+       newArr=getPrimeFactors(i)
        newArr.forEach((no)=>{
         if(!arr.includes(no))
             arr.push(no);
@@ -49,6 +49,7 @@ function findPow(arr,i){
         counter=isPow(j,i);
                 a=j;
    c++;
+   break;
     }
 
         }
@@ -94,16 +95,48 @@ function getPrime(n){
     let arr=[];
     while(i<=n){
         if(isPrime(i))
-            arr.push(i);
+            arr.push({p:i,oc:0});
         i++;
     }
     return arr;
 }
+function data(arr){
+    let newArr=[];
+    let oc=1;
+    let x;
+  for(let i=0;i<arr.length;i++)
+  {
+    if(arr[i+1]===arr[i])
+    {
+        oc++;
+    }
+    else{
+
+        newArr.push({p:arr[i],oc})
+        oc=1;
+        
+    }
+        
+  }
+  return newArr;
+}
 function smallestMultiple(n,arr=getPrime(n)){
-    let i=2;
-while(i<=n){
-    console.log(getPrimeFactors(i), " hey");
-    i++;
+    let prod=1;
+    if(n===1)
+    {
+            arr.forEach((prime)=>{
+                prod*=Math.pow(prime.p,prime.oc);
+            })
+            return prod;
+    }
+        
+
+data(getPrimeFactors(n)).forEach((factor)=>{
+    arr.forEach((prime)=>{
+        if(prime.p===factor.p && factor.oc>prime.oc)
+            prime.oc=factor.oc;
+    })
+})
+return smallestMultiple(n-1,arr,prod)
 }
-}
-smallestMultiple(20);
+console.log(smallestMultiple(20))
