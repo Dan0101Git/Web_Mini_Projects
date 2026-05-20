@@ -24,7 +24,7 @@ const linkedList=()=>{
         let valueArray=[];
         while(temp!=null)
         {
-            dataArray.push(temp.data);
+            dataArray.push([temp.data.key,temp.data.value]);
             keyArray.push(temp.data.key);
             valueArray.push(temp.data.value);
             temp=temp.nextNode;
@@ -135,21 +135,29 @@ function clear(){
 function keys(){
     let keyArray=[];
     for(let bucket of hashMapArray){
-        
-        keyArray.push(...bucket.getData().keyArray);
+        if(bucket)
+            keyArray.push(...bucket.getData().keyArray);
     }
     return keyArray
 }
 function values(){
     let valueArray=[];
     for(let bucket of hashMapArray){
-        
+        if(bucket)
         valueArray.push(...bucket.getData().valueArray);
     }
     return valueArray;
 }
+function entries(){
+    let entryArray=[];
+        for(let bucket of hashMapArray){
+        if(bucket)
+        entryArray.push(...bucket.getData().dataArray);
+    }
+    return entryArray;
+}
     return {
-        hash, set, get, has, remove, length, clear, keys, values
+        hash, set, get, has, remove, length, clear, keys, values, entries
     }
 }
 let test=hashMap();
@@ -168,4 +176,4 @@ test.set('lion', 'golden');
 test.set('lion', 'gold');
 
 console.log(test.length(),test.get("frog"),test.has("grape"),test.remove("lion"),test.length(),
-test.clear(),test.keys(),test.values());
+test.keys(),test.values(),test.entries());
