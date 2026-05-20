@@ -66,6 +66,8 @@ const hashMap=function(){
     let loadFactor=0.75;
     let capacity=16;
     function bucket(code){
+        if(code < 0 || code >= capacity)
+            throw new Error("Trying to access index out of bounds")
         return hashMapArray[code];
     }
 function hash(key){
