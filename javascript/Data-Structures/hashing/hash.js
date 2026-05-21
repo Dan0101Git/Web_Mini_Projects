@@ -63,12 +63,25 @@ const linkedList=()=>{
 
 const hashMap=function(){
     let hashMapArray=[];
+  
     let loadFactor=0.75;
     let capacity=16;
     function bucket(code){
         if(code < 0 || code >= capacity)
             throw new Error("Trying to access index out of bounds")
         return hashMapArray[code];
+    }
+    function growth(){
+            if(length()>(loadFactor*capacity)){
+                capacity=capacity*2;
+console.log(capacity,loadFactor*capacity);
+let prevDataArray=entries();
+hashMapArray=[];
+for(let bucket of prevDataArray)
+{
+                set(bucket[0],bucket[1]);
+}
+    }
     }
 function hash(key){
     let hashCode=0;
@@ -83,9 +96,9 @@ function hash(key){
     let bucketList=bucket(bucketIndex);
     return bucketList;
     }
-function set(key,value){
+function set(key,value){    
     let bucketIndex=hash(key);
-    
+
     let bucketList=bucket(bucketIndex);
     if(bucketList)
     {
@@ -99,8 +112,9 @@ function set(key,value){
     else{//make a new list and add a head to the list
         bucketList=linkedList();
         hashMapArray[bucketIndex]=bucketList;
-        hashMapArray[bucketIndex].prepend({key,value})
+        hashMapArray[bucketIndex].prepend({key,value});
     }
+    growth();
     return;
 }
 function get(key){
@@ -176,6 +190,8 @@ test.set('jacket', 'blue')
 test.set('kite', 'pink')
 test.set('lion', 'golden');
 test.set('lion', 'gold');
+test.set('lio', 'golden');
+
 
 console.log(test.length(),test.get("frog"),test.has("grape"),test.remove("lion"),test.length(),
 test.keys(),test.values(),test.entries());
