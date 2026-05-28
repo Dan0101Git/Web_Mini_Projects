@@ -20,7 +20,8 @@ const Tree=(array)=>{
     function removeDuplicates(array){
         newArray=[];
       for(let index=0;index<array.length;index++){
-            if(array[index]===array[index+1])
+
+            if(array[index+1] && array[index]===array[index+1])
                 continue;
             newArray.push(array[index]);
         }
